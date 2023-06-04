@@ -20,6 +20,14 @@ const musicSchema = new Schema({
     genre:{
         type:String,
         required:true,
+    },
+    image:{
+        type:String,
+        required:true,
+    },
+    cloudinary_id:{
+        type:String,
+        required:true
     }
 });
 module.exports = mongoose.model("Music", musicSchema);

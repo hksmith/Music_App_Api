@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const multer = require('multer');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3500;
@@ -14,7 +16,7 @@ const musicRoutes = require('./src/routes/music-route');
 app.use('/playlist', musicRoutes);
 
 // MongoDB Atlas Connection
-const mongoURI = 'mongodb+srv://kalabsol25:nB92.GEf*b6fhaJ@cluster0.urbyao0.mongodb.net/?retryWrites=true&w=majority';
+const mongoURI = process.env.MONGODBURI;
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => {
   console.log('Connected to MongoDB Atlas');
