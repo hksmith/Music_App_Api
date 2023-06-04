@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
-const musicRoutes = require('./routes/music-route');
+const musicRoutes = require('./src/routes/music-route');
 app.use('/playlist', musicRoutes);
 
 // MongoDB Atlas Connection
