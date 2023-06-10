@@ -15,25 +15,14 @@ const storage = multer.diskStorage({
             callback(error);
           } else {
             // "uploads" folder created, proceed to the appropriate subfolder
-            proceedToSubfolder();
+            callback(null, `${uploadFolder}`);
           }
         });
       } else {
         // "uploads" folder already exists, proceed to the appropriate subfolder
-        proceedToSubfolder();
+        callback(null, `${uploadFolder}`);
       }
     });
-
-    function proceedToSubfolder() {
-      // Choose the appropriate subfolder based on the file fieldname
-      if (file.fieldname === "image") {
-        callback(null, `${uploadFolder}`);
-      } else if (file.fieldname === "audio") {
-        callback(null, `${uploadFolder}`);
-      } else {
-        callback(new Error("Invalid fieldname"));
-      }
-    }
   },
   filename: function (req, file, callback) {
     callback(null, Date.now() + "-" + file.originalname);
